@@ -5,20 +5,24 @@ const calculate = (calculationSteps) => {
     return NaN
   }
 
-  // loop through array
+  let newArray = []
+
+  // loop through test array
   for (i = 0; i < calculationSteps.length; i++) {
-    // if iteration equals null, reassign value to 0. if iteration equals word, remove from array
+    // if iteration equals null, reassign value to 0. if iteration equals operator or number, push it to new array
     if (calculationSteps[i] === null) {
       calculationSteps[i] = '0'
-    } else if (calculationSteps[i] === 'foo' || calculationSteps[i] === 'bar') {
-      calculationSteps.splice([i], 1)
+      newArray.push(calculationSteps[i])
+    } else if (calculationSteps[i] === '+' || calculationSteps[i] === '-' || calculationSteps[i] === '*' || calculationSteps[i] === '/') {
+      newArray.push(calculationSteps[i])
+    } else if (isNaN(calculationSteps[i]) === false) {
+      newArray.push(calculationSteps[i])
     }
   }
 
-
-  // bring components together, solve operation
-
-  return eval(calculationSteps.join(''))
+  // evaluate newArray
+  return eval(newArray.join(''))
 }
+
 
 module.exports = calculate
