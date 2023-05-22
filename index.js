@@ -1,7 +1,7 @@
 const calculate = (calculationSteps) => {
   // if array does not have any mathematical operators, return NaN
   if (calculationSteps.includes('+') === false && calculationSteps.includes('-') === false &&
-  calculationSteps.includes('*') === false) {
+  calculationSteps.includes('*') === false && calculationSteps.includes('/') === false) {
     return NaN
   }
 
